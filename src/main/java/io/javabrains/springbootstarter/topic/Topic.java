@@ -1,18 +1,24 @@
 package io.javabrains.springbootstarter.topic;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Topic {
+
+	@Id
 	private String id;
 	private String name;
-	private String desc;
+	private String description;
 
 	public Topic() {
 	}
 
-	public Topic(String id, String name, String desc) {
+	public Topic(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 	}
 
 	public String getId() {
@@ -31,12 +37,12 @@ public class Topic {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

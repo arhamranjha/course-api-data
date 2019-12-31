@@ -20,6 +20,11 @@ public class TopicController {
 		return topicService.getAllTopics();
 	}
 
+	@RequestMapping("/topicsCount")
+	public Long getAllTopicsCount() {
+		return topicService.getAllTopicsCount();
+	}
+
 	@RequestMapping("/topics/{id}")
 	public Topic getTopic(@PathVariable String id) {
 		return topicService.getTopic(id);
@@ -30,15 +35,24 @@ public class TopicController {
 		topicService.addTopic(topic);
 	}
 
+	@RequestMapping(method = RequestMethod.POST, value = "/saveAllTopics")
+	public void saveAll(@RequestBody List<Topic> topicList) {
+		topicService.saveAll(topicList);
+	}
+
 	@RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
 	public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
 		topicService.updateTopic(topic, id);
 	}
-	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
-	public void deleteTopic(@PathVariable String id) {
-		topicService.deleteTopic(id);
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/topics")
+	public void deleteTopic(@RequestBody Topic topic) {
+		topicService.deleteTopic(topic);
 	}
-	
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
+	public void deleteTopicById(@PathVariable String id) {
+		topicService.deleteTopicById(id);
+	}
 
 }
